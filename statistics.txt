@@ -1,9 +1,0 @@
-black=4
-yellow=4
-orange=4
-blue=4
-red=4
-green=4
-purple=4
-brown=4
-pink=4
