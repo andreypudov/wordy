@@ -17,7 +17,7 @@ func main() {
 
 	learning.Learn(dictionary, learningstat)
 
-	err = statistics. Update(learningstat, "statistics.txt")
+	err = statistics.Update(learningstat, "statistics.txt")
 	if err != nil {
 		log.Fatal(err)
 		return

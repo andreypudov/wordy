@@ -4,14 +4,19 @@ import (
 	"fmt"
 	"wordy/dictionary"
 	"wordy/statistics"
+	"wordy/utils"
 )
 
-func Learn(dictionary dictionary.Dictionary, statistics statistics.Statistics) statistics.Statistics {
-	for word, translation := range dictionary {
-		stat := statistics[word]
-		fmt.Println(word, " := ", translation, " [", stat, "]")
+// 1. Sort words by rating
 
-		statistics[word] += 1
+func Learn(dictionary dictionary.Dictionary, statistics statistics.Statistics) statistics.Statistics {
+	sorted_statistics := utils.SortStatistics(statistics)
+
+	for _, stat := range sorted_statistics {
+		translation := dictionary[stat.Key]
+		fmt.Println(stat.Key, " := ", translation, " [", stat.Value, "]")
+
+		statistics[stat.Key] += 1
 	}
 
 	return statistics
