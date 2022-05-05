@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	learningstat    := statistics.Get("statistics.txt")
+	learningstat := statistics.Get("statistics.txt")
 	dictionary, err := dictionary.Get("dictionary.txt")
 	if err != nil {
 		log.Fatal(err)

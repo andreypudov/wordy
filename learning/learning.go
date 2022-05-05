@@ -1,23 +1,17 @@
 package learning
 
 import (
-	"fmt"
 	"wordy/dictionary"
 	"wordy/statistics"
-	"wordy/utils"
 )
 
-// 1. Sort words by rating
+type Teacher func(dictionary dictionary.Dictionary, statistics statistics.Statistics)
 
 func Learn(dictionary dictionary.Dictionary, statistics statistics.Statistics) statistics.Statistics {
-	sorted_statistics := utils.SortStatistics(statistics)
+	var teacher Teacher
 
-	for _, stat := range sorted_statistics {
-		translation := dictionary[stat.Key]
-		fmt.Println(stat.Key, " := ", translation, " [", stat.Value, "]")
-
-		statistics[stat.Key] += 1
-	}
+	teacher = TeacherCards
+	teacher(dictionary, statistics)
 
 	return statistics
 }
